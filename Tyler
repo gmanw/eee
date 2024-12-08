@@ -1,0 +1,58 @@
+@@ -1,21 +1,21 @@
+#SingleInstance, force
+if (A_ScreenDPI*100//96 != 100) {
+	Run, ms-settings:display
+	msgbox, 0x1030, WARNING!!, % "Your Display Scale seems to be a value other than 100`%. This means the macro will NOT work correctly!`n`nTo change this, right click on your Desktop -> Click 'Display Settings' -> Under 'Scale & Layout', set Scale to 100`% -> Close and Restart Roblox before starting the macro.", 60
+	ExitApp
+}
+If !FileExist("Settings.ini") {
+	Msgbox,,Fisch Macro,You don't have a settings file yet. Would you like to create one? Press OK to proceed
+	IniWrite, 0.05, Settings.ini, Fisch, Control 
+}
+IniRead, Control, Settings.ini, Fisch, Control 
+If (Control = "ERROR") {
+	IniWrite, 0.05, Settings.ini, Fisch, Control 
+	Control := "0.05"
+}
+Control := StrSplit(Control, "|")
+If (Control[2]) {
+	Msgbox The control settings are outdated. Please check the #for-buyer channel.`nRestore the settings to their default values.
+	Msgbox The control settings are outdated.`nRestored the settings to their default values.
+	IniWrite, 0.05, Settings.ini, Fisch, Control 
+	ExitApp
+}
+@@ -39,7 +39,7 @@
+Loop,
+{
+	Send {down}{enter}
+	If (A_TickCount - Timer >= 40000) { ; incase macro break it do again every 5 second after no activity
+	If (A_TickCount - Timer >= 40000) { 
+		Reels()
+		Timer := A_TickCount
+	}
+@@ -164,11 +164,8 @@
+		}
+	}
+}
+MsgBox, Got Outside Loop Somehow
+ExitApp
+Return
+$Space::ExitApp
+Reels(x := 0, Stop := false) {
+	If (!x) {
+		Sleep 2000
+@@ -195,12 +192,9 @@
+		}
+	}
+	Click, Up
+	If (Whitebar) {
+		Return True
+	}
+	Return False
+	Return % Whitebar
+}
+GetRobloxHWND() {
+	if (hwnd := WinExist("Roblox ahk_exe RobloxPlayerBeta.exe"))
+		return hwnd
+} ; yoooo fire macro with 200 line???
+} ; yoooo fire macro with 200 line???
